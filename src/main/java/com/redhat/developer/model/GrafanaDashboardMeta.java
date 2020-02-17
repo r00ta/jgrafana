@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.redhat.developer.grafana.model.panel.GrafanaPanel;
-import com.redhat.developer.grafana.model.templating.GrafanaTemplating;
-import com.redhat.developer.grafana.model.time.GrafanaTime;
-import com.redhat.developer.grafana.model.time.GrafanaTimePicker;
+import com.redhat.developer.model.panel.GrafanaPanel;
+import com.redhat.developer.model.templating.GrafanaTemplating;
+import com.redhat.developer.model.time.GrafanaTime;
+import com.redhat.developer.model.time.GrafanaTimePicker;
 
 public class GrafanaDashboardMeta {
 
