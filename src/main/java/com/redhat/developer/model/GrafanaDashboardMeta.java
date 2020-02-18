@@ -21,13 +21,13 @@ public class GrafanaDashboardMeta {
     public String title;
 
     @JsonProperty("tags")
-    public List<String> tags;
+    public List<String> tags = new ArrayList<>();
 
     @JsonProperty("style")
     public String style = "dark";
 
     @JsonProperty("timezone")
-    public String timezone;
+    public String timezone = "";
 
     @JsonProperty("editable")
     public boolean editable = true;
@@ -54,21 +54,17 @@ public class GrafanaDashboardMeta {
     public String refresh;
 
     @JsonProperty("schemaVersion")
-    public int schemaVersion = 18;
+    public int schemaVersion = 22;
 
     @JsonProperty("version")
-    public int version;
+    public int version = 1;
 
     @JsonProperty("links")
     public List<String> links = new ArrayList<>(); //todo
 
-    public GrafanaDashboardMeta(String id, String uid, String title, List<String> tags, String timezone, int schemaVersion, int version){
+    public GrafanaDashboardMeta(String id, String uid, String title){
         this.id = id;
         this.uid = uid;
         this.title = title;
-        this.tags = tags;
-        this.timezone = timezone;
-        this.schemaVersion = schemaVersion;
-        this.version = version;
     }
 }

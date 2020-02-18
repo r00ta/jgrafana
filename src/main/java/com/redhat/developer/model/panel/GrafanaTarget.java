@@ -13,12 +13,10 @@ public class GrafanaTarget {
     public int intervalFactor = 2;
 
     @JsonProperty("refId")
-    public String refId;
+    public String refId = "A";
 
-    public GrafanaTarget(String expr, String format, int intervalFactor, String refId){
+    public GrafanaTarget(String expr, String format){
         this.expr = expr;
         this.format = format;
-        this.intervalFactor = intervalFactor;
-        this.refId = refId;
     }
 }

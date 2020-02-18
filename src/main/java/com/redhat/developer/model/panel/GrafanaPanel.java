@@ -19,22 +19,24 @@ public class GrafanaPanel {
     @JsonProperty("id")
     public int id;
 
+    @JsonProperty("pluginVersion")
+    public String pluginVersion =  "6.6.1";
+
     @JsonProperty("mode")
     public String mode;
 
     @JsonProperty("content")
     public String content;
 
-    @JsonProperty("lines")
-    public boolean lines;
-
     @JsonProperty("targets")
-    public List<GrafanaTarget> targets = new ArrayList<GrafanaTarget>();
+    public List<GrafanaTarget> targets;
 
-    public GrafanaPanel(int id, String title, String type){
+    public GrafanaPanel(int id, String title, String type, GrafanaGridPos gridPos, List<GrafanaTarget> targets){
         this.id = id;
         this.title = title;
         this.type = type;
+        this.gridPos = gridPos;
+        this.targets = targets;
     }
 
 }
