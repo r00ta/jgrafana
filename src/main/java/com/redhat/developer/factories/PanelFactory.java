@@ -1,11 +1,9 @@
 package com.redhat.developer.factories;
 
-import java.util.HashMap;
-
 import com.redhat.developer.model.panel.GaugePanel;
 import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.panel.GraphPanel;
-import com.redhat.developer.model.panel.HeatMapPanel;
+import com.redhat.developer.model.panel.heatmap.HeatMapPanel;
 import com.redhat.developer.model.panel.PanelType;
 import com.redhat.developer.model.panel.SingleStatPanel;
 import com.redhat.developer.model.panel.StatPanel;

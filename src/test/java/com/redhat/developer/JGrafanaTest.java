@@ -1,6 +1,7 @@
 package com.redhat.developer;
 
 import java.awt.List;
+import java.io.File;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -91,12 +92,12 @@ public class JGrafanaTest {
 
         // Act
         grafanaObj.addPanel(PanelType.GRAPH, "My Graph 1", "api_http_response_code{handler=\"world\"}");
-        grafanaObj.addPanel(PanelType.GRAPH, "My Graph 2", "api_http_response_code{handler=\"world\"}");
-        grafanaObj.addPanel(PanelType.GRAPH, "My Graph 2", "api_http_response_code{handler=\"world\"}");
-        grafanaObj.addPanel(PanelType.GRAPH, "My Graph 2", "api_http_response_code{handler=\"world\"}");
+        grafanaObj.addPanel(PanelType.HEATMAP, "My Graph 2", "sum(increase(api_execution_elapsed_nanosecond_bucket{handler=\"hello\"}[1m])) by (le)");
+        grafanaObj.addPanel(PanelType.STAT, "My Graph 2", "sum(api_http_stacktrace_exceptions)");
+        grafanaObj.addPanel(PanelType.TABLE, "My Graph 2", "api_http_stacktrace_exceptions");
         grafanaObj.addPanel(PanelType.GRAPH, "My Graph 3", "api_http_response_code{handler=\"world\"}");
         grafanaObj.removePanelByTitle("My Graph 2");
-
+        
         // Assert
         assertEquals(2, grafanaObj.getDashboard().panels.size());
         assertEquals(true, grafanaObj.getDashboard().panels.stream().anyMatch(x -> x.title == "My Graph 1"));
