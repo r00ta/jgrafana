@@ -1,7 +1,6 @@
 com/redhat/developer/model/panel/PanelType$2.class
 com/redhat/developer/model/panel/StatPanel.class
 com/redhat/developer/model/templating/GrafanaTemplating.class
-com/redhat/developer/model/GrafanaConfiguration.class
 com/redhat/developer/model/panel/HeatMapPanel.class
 com/redhat/developer/factories/PanelFactory$1.class
 com/redhat/developer/model/panel/PanelType.class
@@ -24,7 +23,6 @@ com/redhat/developer/model/panel/PanelType$1.class
 com/redhat/developer/model/panel/PanelType$6.class
 com/redhat/developer/model/time/GrafanaTime.class
 com/redhat/developer/model/GrafanaDashboard.class
-com/redhat/developer/model/GrafanaDashboardMeta.class
 com/redhat/developer/JGrafana.class
 com/redhat/developer/model/panel/PanelType$5.class
 com/redhat/developer/model/panel/GrafanaPanel.class

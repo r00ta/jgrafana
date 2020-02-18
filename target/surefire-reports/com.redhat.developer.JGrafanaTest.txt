@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.redhat.developer.JGrafanaTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.193 sec - in com.redhat.developer.JGrafanaTest
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.437 sec <<< FAILURE! - in com.redhat.developer.JGrafanaTest
+GivenADashboardWithManyPanelsWithSameTitle_WhenAPanelIsDeleted_ThenAllThePanelsWithThatNameAreRemoved()  Time elapsed: 0.019 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <2>
+	at com.redhat.developer.JGrafanaTest.GivenADashboardWithManyPanelsWithSameTitle_WhenAPanelIsDeleted_ThenAllThePanelsWithThatNameAreRemoved(JGrafanaTest.java:101)
+

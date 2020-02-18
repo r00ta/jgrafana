@@ -12,7 +12,6 @@
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/GrafanaDashboard.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/panel/TablePanel.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/templating/GrafanaTemplateCurrent.java
-/vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/GrafanaDashboardMeta.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/templating/GrafanaTemplate.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/panel/StatPanel.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/panel/GrafanaTarget.java
@@ -21,4 +20,3 @@
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/factories/GridPosFactory.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/panel/GrafanaGridPos.java
 /vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/templating/GrafanaTemplateOption.java
-/vagrant/RH/jgrafana/src/main/java/com/redhat/developer/model/GrafanaConfiguration.java
