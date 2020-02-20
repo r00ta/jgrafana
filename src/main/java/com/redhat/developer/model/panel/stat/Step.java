@@ -10,6 +10,8 @@ public class Step {
     @JsonProperty("value")
     public Double value = null;
 
+    public Step(){}
+
     public Step(String color, Double value){
         this.color = color;
         this.value = value;

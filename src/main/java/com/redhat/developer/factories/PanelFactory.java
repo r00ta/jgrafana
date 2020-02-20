@@ -2,12 +2,12 @@ package com.redhat.developer.factories;
 
 import com.redhat.developer.model.panel.GaugePanel;
 import com.redhat.developer.model.panel.GrafanaPanel;
-import com.redhat.developer.model.panel.GraphPanel;
+import com.redhat.developer.model.panel.graph.GraphPanel;
 import com.redhat.developer.model.panel.heatmap.HeatMapPanel;
 import com.redhat.developer.model.panel.PanelType;
-import com.redhat.developer.model.panel.SingleStatPanel;
-import com.redhat.developer.model.panel.StatPanel;
-import com.redhat.developer.model.panel.TablePanel;
+import com.redhat.developer.model.panel.stat.SingleStatPanel;
+import com.redhat.developer.model.panel.stat.StatPanel;
+import com.redhat.developer.model.panel.table.TablePanel;
 
 public class PanelFactory {
 

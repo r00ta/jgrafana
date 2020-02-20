@@ -22,6 +22,27 @@ public class JGrafana implements IJGrafana{
     private GrafanaDashboard dashboard;
 
     /**
+     * Reads a json grafana dashboard from file and returns the JGrafana object containing that dashboard.
+     * @param dashboardPath
+     * @throws IOException
+     */
+    public static IJGrafana parse(File dashboardPath) throws IOException {
+        return parse(FileUtils.readFileToString(dashboardPath, StandardCharsets.UTF_8));
+    }
+
+    /**
+     * Parse a json grafana dashboard and returns the JGrafana object containing that dashboard.
+     * @param dashboard
+     * @return
+     * @throws JsonProcessingException
+     */
+    public static IJGrafana parse(String dashboard) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        GrafanaDashboard dash = mapper.readValue(dashboard, GrafanaDashboard.class);
+        return new JGrafana(dash);
+    }
+
+    /**
      * Create a new JGrafana instance.
      * @param title: The title of your dashboard.
      */
@@ -36,29 +57,6 @@ public class JGrafana implements IJGrafana{
      */
     public JGrafana(GrafanaDashboard dashboard){
         this.dashboard = dashboard;
-    }
-
-    /**
-     * Reads a json grafana dashboard from file and returns the JGrafana object containing that dashboard.
-     * @param dashboardPath
-     * @throws IOException
-     */
-    @Override
-    public IJGrafana parse(File dashboardPath) throws IOException {
-        return parse(FileUtils.readFileToString(dashboardPath, StandardCharsets.UTF_8));
-    }
-
-    /**
-     * Parse a json grafana dashboard and returns the JGrafana object containing that dashboard.
-     * @param dashboard
-     * @return
-     * @throws JsonProcessingException
-     */
-    @Override
-    public IJGrafana parse(String dashboard) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        GrafanaDashboard dash = mapper.readValue(dashboard, GrafanaDashboard.class);
-        return new JGrafana(dash);
     }
 
     /**

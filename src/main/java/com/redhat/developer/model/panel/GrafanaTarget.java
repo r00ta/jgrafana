@@ -15,6 +15,11 @@ public class GrafanaTarget {
     @JsonProperty("refId")
     public String refId = "A";
 
+    @JsonProperty("instant")
+    public boolean instant;
+
+    public GrafanaTarget(){}
+
     public GrafanaTarget(String expr, String format){
         this.expr = expr;
         this.format = format;

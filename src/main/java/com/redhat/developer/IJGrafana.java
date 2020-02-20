@@ -9,11 +9,6 @@ import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.panel.PanelType;
 
 public interface IJGrafana {
-
-    IJGrafana parse(String dashboard) throws JsonProcessingException;
-
-    IJGrafana parse(File dashboardPath) throws IOException;
-
     GrafanaDashboard getDashboard();
 
     GrafanaPanel addPanel(PanelType type, String title, String expr);

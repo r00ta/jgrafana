@@ -1,7 +1,6 @@
-package com.redhat.developer.model.panel.heatmap;
+package com.redhat.developer.model.panel.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 public class YAxis {
     @JsonProperty("decimals")
@@ -24,4 +23,7 @@ public class YAxis {
 
     @JsonProperty("splitFactor")
     public String splitFactor = null;
+
+    @JsonProperty("label")
+    public String label;
 }

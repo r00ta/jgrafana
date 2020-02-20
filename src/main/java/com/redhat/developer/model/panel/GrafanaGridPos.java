@@ -15,6 +15,8 @@ public class GrafanaGridPos {
     @JsonProperty("h")
     public int h;
 
+    public GrafanaGridPos(){}
+
     public GrafanaGridPos(int x, int y, int w, int h){
         this.x = x;
         this.y = y;

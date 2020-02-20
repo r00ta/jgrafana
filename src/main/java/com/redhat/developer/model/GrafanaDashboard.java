@@ -3,6 +3,7 @@ package com.redhat.developer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.templating.GrafanaTemplating;
@@ -16,6 +17,9 @@ public class GrafanaDashboard {
 
     @JsonProperty("uid")
     public String uid;
+
+    @JsonProperty("gnetId")
+    public String gnetId;
 
     @JsonProperty("title")
     public String title;
@@ -36,7 +40,7 @@ public class GrafanaDashboard {
     public boolean hideControls;
 
     @JsonProperty("graphTooltip")
-    public boolean graphTooltip;
+    public int graphTooltip;
 
     @JsonProperty("panels")
     public List<GrafanaPanel> panels = new ArrayList<>();
@@ -51,7 +55,7 @@ public class GrafanaDashboard {
     public GrafanaTemplating templating;
 
     @JsonProperty("refresh")
-    public String refresh;
+    public boolean refresh;
 
     @JsonProperty("schemaVersion")
     public int schemaVersion = 22;
@@ -61,6 +65,11 @@ public class GrafanaDashboard {
 
     @JsonProperty("links")
     public List<String> links = new ArrayList<>(); //todo
+
+    @JsonProperty("annotations")
+    public Object annotations;
+
+    public GrafanaDashboard(){};
 
     public GrafanaDashboard(String id, String uid, String title){
         this.id = id;

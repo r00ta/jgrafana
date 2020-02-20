@@ -1,11 +1,31 @@
 package com.redhat.developer.model.panel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.redhat.developer.model.panel.common.Options;
+import com.redhat.developer.model.panel.graph.GraphPanel;
+import com.redhat.developer.model.panel.heatmap.HeatMapPanel;
+import com.redhat.developer.model.panel.stat.SingleStatPanel;
+import com.redhat.developer.model.panel.stat.StatPanel;
+import com.redhat.developer.model.panel.table.TablePanel;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property="type",  visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = TablePanel.class, name = "table"),
+        @JsonSubTypes.Type(value = StatPanel.class, name = "stat"),
+        @JsonSubTypes.Type(value = SingleStatPanel.class, name = "singleStat"),
+        @JsonSubTypes.Type(value = GraphPanel.class, name = "graph"),
+        @JsonSubTypes.Type(value = GaugePanel.class, name = "gauge"),
+        @JsonSubTypes.Type(value = HeatMapPanel.class, name = "heatmap")
+    }
+)
 public class GrafanaPanel {
+
+    @JsonProperty("datasource")
+    public String datasource;
 
     @JsonProperty("type")
     public String type;
@@ -30,6 +50,21 @@ public class GrafanaPanel {
 
     @JsonProperty("targets")
     public List<GrafanaTarget> targets;
+
+    @JsonProperty("links")
+    public List<String> links;
+
+    @JsonProperty("timeFrom")
+    public String timeFrom;
+
+    @JsonProperty("timeShift")
+    public String timeShift;
+
+    @JsonProperty("options")
+    public Options options;
+
+    public GrafanaPanel(){
+    }
 
     public GrafanaPanel(int id, String title, String type, GrafanaGridPos gridPos, List<GrafanaTarget> targets){
         this.id = id;
