@@ -3,8 +3,10 @@ package com.redhat.developer.model.time;
 import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GrafanaTimePicker {
     @JsonProperty("time_options")
     public List<String> timeOptions = Arrays.asList("5m",

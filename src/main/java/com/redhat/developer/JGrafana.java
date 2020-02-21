@@ -3,11 +3,13 @@ package com.redhat.developer;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.redhat.developer.factories.GridPosFactory;
 import com.redhat.developer.factories.PanelFactory;
 import com.redhat.developer.model.GrafanaDashboard;
 import com.redhat.developer.model.panel.GrafanaPanel;
@@ -39,6 +41,11 @@ public class JGrafana implements IJGrafana{
     public static IJGrafana parse(String dashboard) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         GrafanaDashboard dash = mapper.readValue(dashboard, GrafanaDashboard.class);
+        for(int i = 0; i < dash.panels.size(); i++){
+            GrafanaPanel p = dash.panels.get(i);
+            p.id = i + 1;
+            p.gridPos = GridPosFactory.CalculateGridPosById(i + 1);
+        }
         return new JGrafana(dash);
     }
 

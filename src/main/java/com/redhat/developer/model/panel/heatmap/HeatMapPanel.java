@@ -2,6 +2,7 @@ package com.redhat.developer.model.panel.heatmap;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.redhat.developer.model.panel.GrafanaGridPos;
 import com.redhat.developer.model.panel.GrafanaPanel;
@@ -12,6 +13,7 @@ import com.redhat.developer.model.panel.common.Tooltip;
 import com.redhat.developer.model.panel.common.XAxis;
 import com.redhat.developer.model.panel.common.YAxis;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class HeatMapPanel extends GrafanaPanel {
 
     @JsonProperty("color")

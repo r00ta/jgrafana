@@ -1,7 +1,9 @@
 package com.redhat.developer.model.panel;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GrafanaTarget {
     @JsonProperty("expr")
     public String expr;

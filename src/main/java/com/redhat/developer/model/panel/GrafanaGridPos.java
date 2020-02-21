@@ -23,4 +23,8 @@ public class GrafanaGridPos {
         this.w = w;
         this.h = h;
     }
+
+    public String toString(){
+        return String.format("{\"x\": %d, \"y\": %d, \"w\": %d, \"h\": %d}", x, y, w, h);
+    }
 }

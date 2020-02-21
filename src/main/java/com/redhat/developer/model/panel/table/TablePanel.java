@@ -3,15 +3,13 @@ package com.redhat.developer.model.panel.table;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.redhat.developer.model.panel.GrafanaGridPos;
 import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.panel.GrafanaTarget;
-import com.redhat.developer.model.panel.table.BaseStyle;
-import com.redhat.developer.model.panel.table.DateStyle;
-import com.redhat.developer.model.panel.table.NumberStyle;
-import com.redhat.developer.model.panel.table.TableSort;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TablePanel extends GrafanaPanel {
 
     @JsonProperty("fontSize")

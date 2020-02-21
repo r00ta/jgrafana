@@ -2,6 +2,7 @@ package com.redhat.developer.model.panel;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -22,6 +23,7 @@ import com.redhat.developer.model.panel.table.TablePanel;
         @JsonSubTypes.Type(value = HeatMapPanel.class, name = "heatmap")
     }
 )
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GrafanaPanel {
 
     @JsonProperty("datasource")

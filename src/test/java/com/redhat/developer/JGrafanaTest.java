@@ -118,7 +118,9 @@ public class JGrafanaTest {
 
     @Test
     public void GivenAnExistingDashboard_WhenParseMethodIsCalled_ThenTheDashboardIsImported() {
-        System.out.println(readStandardDashboard());
-        assertDoesNotThrow(() -> JGrafana.parse(readStandardDashboard()));
+        assertDoesNotThrow(() -> {
+            IJGrafana dash = JGrafana.parse(readStandardDashboard());
+            System.out.println(dash.serialize());
+        });
     }
 }

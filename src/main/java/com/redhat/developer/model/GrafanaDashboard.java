@@ -10,6 +10,7 @@ import com.redhat.developer.model.templating.GrafanaTemplating;
 import com.redhat.developer.model.time.GrafanaTime;
 import com.redhat.developer.model.time.GrafanaTimePicker;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GrafanaDashboard {
 
     @JsonProperty("id")
