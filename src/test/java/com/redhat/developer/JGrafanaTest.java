@@ -1,18 +1,12 @@
 package com.redhat.developer;
 
-import java.awt.List;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.redhat.developer.model.panel.PanelType;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
@@ -110,17 +104,16 @@ public class JGrafanaTest {
         assertEquals(false, grafanaObj.getDashboard().panels.stream().anyMatch(x -> x.title == "My Graph 2"));
     }
 
-    public static String readStandardDashboard(){
-
-        InputStream is = JGrafanaTest.class.getResourceAsStream("/test_dashboard.json" );
-        return new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
-    }
-
     @Test
     public void GivenAnExistingDashboard_WhenParseMethodIsCalled_ThenTheDashboardIsImported() {
         assertDoesNotThrow(() -> {
             IJGrafana dash = JGrafana.parse(readStandardDashboard());
-            System.out.println(dash.serialize());
         });
+    }
+
+    public static String readStandardDashboard(){
+
+        InputStream is = JGrafanaTest.class.getResourceAsStream("/test_dashboard.json" );
+        return new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
     }
 }

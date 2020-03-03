@@ -8,6 +8,12 @@ public class Legend {
     @JsonProperty("avg")
     public boolean avg;
 
+    @JsonProperty("alignAsTable")
+    public boolean alignAsTable;
+
+    @JsonProperty("rightSide")
+    public boolean rightSide;
+
     @JsonProperty("legend")
     public boolean legend;
 

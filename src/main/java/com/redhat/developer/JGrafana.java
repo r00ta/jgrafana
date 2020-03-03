@@ -3,7 +3,6 @@ package com.redhat.developer;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Random;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
