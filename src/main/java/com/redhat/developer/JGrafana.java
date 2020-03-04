@@ -91,6 +91,16 @@ public class JGrafana implements IJGrafana{
     }
 
     /**
+     * Remove a panel by title.
+     * @param title: The title of the panel to be removed.
+     * @return: true if the panel has been remove, false otherwise.
+     */
+    @Override
+    public boolean removePanelByTitle(String title){
+        return this.dashboard.panels.removeIf(x -> x.title == title);
+    }
+
+    /**
      * Adds a panel of a type to the dashboard.
      * @param type: The type of the panel to be added.
      * @param title: Title of the panel.
@@ -101,21 +111,13 @@ public class JGrafana implements IJGrafana{
     public GrafanaPanel addPanel(PanelType type, String title, String expr, HashMap<Integer, GrafanaFunction> functions) {
         int id = this.dashboard.panels.size() + 1;
         if (functions != null && functions.size() != 0){
+            System.out.println(expr);
             expr = ExprBuilder.apply(expr, functions);
+            System.out.println(expr);
         }
         GrafanaPanel panel = PanelFactory.CreatePanel(type, id, title, expr);
         this.dashboard.panels.add(panel);
         return panel;
-    }
-
-    /**
-     * Remove a panel by title.
-     * @param title: The title of the panel to be removed.
-     * @return: true if the panel has been remove, false otherwise.
-     */
-    @Override
-    public boolean removePanelByTitle(String title){
-        return this.dashboard.panels.removeIf(x -> x.title == title);
     }
 
     /**
