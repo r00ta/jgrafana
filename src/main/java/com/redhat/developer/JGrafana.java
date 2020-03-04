@@ -111,9 +111,7 @@ public class JGrafana implements IJGrafana{
     public GrafanaPanel addPanel(PanelType type, String title, String expr, HashMap<Integer, GrafanaFunction> functions) {
         int id = this.dashboard.panels.size() + 1;
         if (functions != null && functions.size() != 0){
-            System.out.println(expr);
             expr = ExprBuilder.apply(expr, functions);
-            System.out.println(expr);
         }
         GrafanaPanel panel = PanelFactory.CreatePanel(type, id, title, expr);
         this.dashboard.panels.add(panel);
