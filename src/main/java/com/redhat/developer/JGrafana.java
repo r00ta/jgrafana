@@ -3,6 +3,8 @@ package com.redhat.developer;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.redhat.developer.factories.GridPosFactory;
 import com.redhat.developer.factories.PanelFactory;
 import com.redhat.developer.model.GrafanaDashboard;
+import com.redhat.developer.model.functions.ExprBuilder;
+import com.redhat.developer.model.functions.GrafanaFunction;
 import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.panel.PanelType;
 import org.apache.commons.io.FileUtils;
@@ -83,7 +87,22 @@ public class JGrafana implements IJGrafana{
      */
     @Override
     public GrafanaPanel addPanel(PanelType type, String title, String expr) {
+        return addPanel(type, title, expr, null);
+    }
+
+    /**
+     * Adds a panel of a type to the dashboard.
+     * @param type: The type of the panel to be added.
+     * @param title: Title of the panel.
+     * @param expr: Prompql expression of the panel.
+     * @return: The grafana panel added to the dashboard.
+     */
+    @Override
+    public GrafanaPanel addPanel(PanelType type, String title, String expr, HashMap<Integer, GrafanaFunction> functions) {
         int id = this.dashboard.panels.size() + 1;
+        if (functions != null && functions.size() != 0){
+            expr = ExprBuilder.apply(expr, functions);
+        }
         GrafanaPanel panel = PanelFactory.CreatePanel(type, id, title, expr);
         this.dashboard.panels.add(panel);
         return panel;

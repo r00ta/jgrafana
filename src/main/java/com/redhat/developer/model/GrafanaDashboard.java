@@ -56,7 +56,7 @@ public class GrafanaDashboard {
     public GrafanaTemplating templating;
 
     @JsonProperty("refresh")
-    public boolean refresh;
+    public String refresh;
 
     @JsonProperty("schemaVersion")
     public int schemaVersion = 22;
