@@ -2,7 +2,7 @@ package com.redhat.developer.model.functions;
 
 public class IncreaseFunction implements GrafanaFunction {
 
-    private final String function = "increase";
+    private final static String function = "increase";
 
     private String timeParameter;
 

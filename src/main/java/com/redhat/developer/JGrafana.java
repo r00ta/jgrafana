@@ -2,9 +2,9 @@ package com.redhat.developer;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +17,6 @@ import com.redhat.developer.model.functions.ExprBuilder;
 import com.redhat.developer.model.functions.GrafanaFunction;
 import com.redhat.developer.model.panel.GrafanaPanel;
 import com.redhat.developer.model.panel.PanelType;
-import org.apache.commons.io.FileUtils;
 
 /**
  *  Java configurator to create standard grafana dashboards
@@ -27,27 +26,18 @@ public class JGrafana implements IJGrafana{
     private GrafanaDashboard dashboard;
 
     /**
-     * Reads a json grafana dashboard from file and returns the JGrafana object containing that dashboard.
-     * @param dashboardPath
-     * @throws IOException
-     */
-    public static IJGrafana parse(File dashboardPath) throws IOException {
-        return parse(FileUtils.readFileToString(dashboardPath, StandardCharsets.UTF_8));
-    }
-
-    /**
      * Parse a json grafana dashboard and returns the JGrafana object containing that dashboard.
      * @param dashboard
      * @return
      * @throws JsonProcessingException
      */
-    public static IJGrafana parse(String dashboard) throws JsonProcessingException {
+    public static IJGrafana parse(String dashboard) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         GrafanaDashboard dash = mapper.readValue(dashboard, GrafanaDashboard.class);
         for(int i = 0; i < dash.panels.size(); i++){
             GrafanaPanel p = dash.panels.get(i);
             p.id = i + 1;
-            p.gridPos = GridPosFactory.CalculateGridPosById(i + 1);
+            p.gridPos = GridPosFactory.calculateGridPosById(i + 1);
         }
         return new JGrafana(dash);
     }
@@ -97,7 +87,7 @@ public class JGrafana implements IJGrafana{
      */
     @Override
     public boolean removePanelByTitle(String title){
-        return this.dashboard.panels.removeIf(x -> x.title == title);
+        return this.dashboard.panels.removeIf(x -> x.title.equals(title));
     }
 
     /**
@@ -108,7 +98,7 @@ public class JGrafana implements IJGrafana{
      * @return: The grafana panel added to the dashboard.
      */
     @Override
-    public GrafanaPanel addPanel(PanelType type, String title, String expr, HashMap<Integer, GrafanaFunction> functions) {
+    public GrafanaPanel addPanel(PanelType type, String title, String expr, Map<Integer, GrafanaFunction> functions) {
         int id = this.dashboard.panels.size() + 1;
         if (functions != null && functions.size() != 0){
             expr = ExprBuilder.apply(expr, functions);
@@ -124,8 +114,12 @@ public class JGrafana implements IJGrafana{
      * @return: The panel.
      */
     @Override
-    public GrafanaPanel getPanelByTitle(String title){
-        return this.dashboard.panels.stream().filter(x -> x.title == title).findFirst().get();
+    public GrafanaPanel getPanelByTitle(String title) throws NoSuchElementException {
+        Optional<GrafanaPanel> panel = this.dashboard.panels.stream().filter(x -> x.title.equals(title)).findFirst();
+        if (!panel.isPresent()){
+            throw new NoSuchElementException(String.format("There is no panel with title \"%s\"", title));
+        }
+        return panel.get();
     }
 
     /**

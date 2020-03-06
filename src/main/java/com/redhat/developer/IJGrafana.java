@@ -2,9 +2,9 @@ package com.redhat.developer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.redhat.developer.model.GrafanaDashboard;
 import com.redhat.developer.model.functions.GrafanaFunction;
 import com.redhat.developer.model.panel.GrafanaPanel;
@@ -15,11 +15,11 @@ public interface IJGrafana {
 
     GrafanaPanel addPanel(PanelType type, String title, String expr);
 
-    GrafanaPanel addPanel(PanelType type, String title, String expr, HashMap<Integer, GrafanaFunction> functions);
+    GrafanaPanel addPanel(PanelType type, String title, String expr, Map<Integer, GrafanaFunction> functions);
 
     boolean removePanelByTitle(String title);
 
-    GrafanaPanel getPanelByTitle(String title);
+    GrafanaPanel getPanelByTitle(String title) throws NoSuchElementException;
 
     String serialize() throws IOException;
 

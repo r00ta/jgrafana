@@ -2,7 +2,7 @@ package com.redhat.developer.model.functions;
 
 public class SumFunction implements GrafanaFunction{
 
-    private final String function = "sum";
+    private final static String function = "sum";
 
     public SumFunction(){}
 

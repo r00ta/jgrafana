@@ -1,11 +1,10 @@
 package com.redhat.developer.model.functions;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ExprBuilder {
-    public static String apply(String expr, HashMap<Integer, GrafanaFunction> functions){
+    public static String apply(String expr, Map<Integer, GrafanaFunction> functions){
         for(Integer key : functions.keySet().stream().sorted().collect(Collectors.toList())){
             GrafanaFunction function = functions.get(key);
             if (function.hasTimeParameter()){

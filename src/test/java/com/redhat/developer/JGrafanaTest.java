@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.redhat.developer.model.panel.PanelType;
-import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
 public class JGrafanaTest {
